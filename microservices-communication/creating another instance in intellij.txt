@@ -1,0 +1,2 @@
+PENDING:	
+configure the port during deploying another instance to run the port in different server port.

@@ -1,0 +1,13 @@
+what will happen if service2 is down if service 1 calls service 2?
+-we can make retry. it is known as retry mechanism.
+-advanced upgrades using openfeign,circuit breaker.
+
+==
+CONFIGURING REST TEMPLATE:
+way 1:
+- create RestTemplate object using @Bean in config class.
+
+way 2:
+- 
+
+====================================

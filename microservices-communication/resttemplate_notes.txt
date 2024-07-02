@@ -1,0 +1,41 @@
+
+WAY 1:  
+
+//instance variable
+ @Autowired
+    private RestTemplate restTemplate;
+ @Value("${addressservice.base.url}")
+    private String addressBaseURL;
+
+//constructor
+EmployeeService(){  
+   System.out.println(addressBaseURL);  // null
+}
+
+//calling another service in a method
+AddressResponse addressResponse = restTemplate.getForObject(addressBaseURL+"/address/{id}",AddressResponse.class,id);
+
+execution notes:
+1. constructor
+2. @Value 
+=========================================================================================
+WAY 2:
+
+    private RestTemplate restTemplate;
+
+    private String addressBaseURL;
+
+    public EmployeeService(@Value("${addressservice.base.url}") String addressBaseURL, RestTemplateBuilder builder){
+        System.out.println("uri : " + addressBaseURL); //uri : http://localhost:8082/address-app/api
+        this.restTemplate = builder
+                .rootUri(addressBaseURL)
+                .build();
+    }
+
+  AddressResponse addressResponse = restTemplate.getForObject("/address/{id}",AddressResponse.class,id);
+
+execution notes:
+1. constructor
+2. @Value
+
+adv: @Autowired is not needed, injection occurred during the constructor invokation. 

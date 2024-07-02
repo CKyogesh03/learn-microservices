@@ -1,0 +1,4 @@
+add dependency:
+openfeign - openfeign,cloud,cloud version
+
+-create interface then annotate @FeignClient
